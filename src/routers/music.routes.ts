@@ -3,9 +3,11 @@ import { Router } from "express";
 
 const musicRouter = Router();
 
-musicRouter.get("/music", musicController.getMusic);
-musicRouter.post("/music", musicController.postMusic);
-musicRouter.put("/music", musicController.updateMusic);
-musicRouter.delete("/music", musicController.deleteMusic);
+musicRouter.get("/musics", musicController.getMusics);
+musicRouter.get("/musics/:id", musicController.getMusicById);
+musicRouter.get("/random-music", musicController.getRandomMusic);
+musicRouter.post("/musics", musicController.postMusic);
+musicRouter.put("/musics/:id", musicController.updateMusic);
+musicRouter.delete("/music/:id", musicController.deleteMusic);
 
 export default musicRouter;
