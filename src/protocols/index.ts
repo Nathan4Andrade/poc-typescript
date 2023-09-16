@@ -5,3 +5,9 @@ export type Music = {
 };
 
 export type CreateMusicData = Omit<Music, "id">;
+
+export type Error = {
+  type: string;
+  message: string;
+  status: number;
+};

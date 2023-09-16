@@ -14,11 +14,6 @@ async function getMusicById(req: Request, res: Response) {
   res.send(music);
 }
 
-async function getRandomMusic(req: Request, res: Response) {
-  const randomMusic = await musicService.getRandomMusic();
-  res.send(randomMusic);
-}
-
 async function postMusic(req: Request, res: Response) {
   const music = req.body as CreateMusicData;
   await musicService.postMusic(music);
@@ -41,7 +36,6 @@ async function deleteMusic(req: Request, res: Response) {
 export const musicController = {
   getMusics,
   getMusicById,
-  getRandomMusic,
   postMusic,
   updateMusic,
   deleteMusic,

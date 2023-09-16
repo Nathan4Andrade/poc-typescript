@@ -14,23 +14,21 @@ async function getMusics(): Promise<Music[]> {
 }
 
 async function postMusic(music: CreateMusicData) {
-  return await db.query<Music>(
-    `INSERT INTO musics ("title", artist") VALUES $1, $2;`[
-      (music.title, music.artist)
-    ]
+  await db.query<CreateMusicData>(
+    `INSERT INTO musics ("title", "artist") VALUES ($1, $2);`,
+    [music.title, music.artist]
   );
 }
 
 async function updateMusic(music: Music) {
   return await db.query<Music>(
-    `UPDATE musics SET title=$2, artist=$3 WHERE id=$1;`[
-      (music.id, music.title, music.artist)
-    ]
+    `UPDATE musics SET title=$2, artist=$3 WHERE id=$1;`,
+    [music.id, music.title, music.artist]
   );
 }
 
 async function deleteMusic(music: Music) {
-  return await db.query<Music>(`DELETE FROM rentals WHERE id=$1`, [music.id]);
+  return await db.query<Music>(`DELETE FROM musics WHERE id=$1`, [music.id]);
 }
 
 export const musicRepository = {
